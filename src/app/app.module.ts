@@ -48,13 +48,14 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
     MatSnackBarModule,    
+    HttpClientModule,
     RouterModule.forRoot(routes),
     NgxWebstorageModule.forRoot(),
-    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+   // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {passThruUnknownUrl: true}),
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
