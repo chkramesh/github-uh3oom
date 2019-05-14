@@ -7,11 +7,14 @@ import { MaterialModule } from './material/material.module';
 import { Routes, RouterModule } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 
 
 import { GlobalErrorHandler } from './global-error-handler';
 import { ServerErrorInterceptor } from './server-error.interceptor';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from '../server/in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -48,8 +51,10 @@ const routes: Routes = [
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
-    MatSnackBarModule,
-    RouterModule.forRoot(routes)
+    MatSnackBarModule,    
+    RouterModule.forRoot(routes),
+    NgxWebstorageModule.forRoot(),
+    // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService),
   ],
   providers: [
     { provide: ErrorHandler, useClass: GlobalErrorHandler },
